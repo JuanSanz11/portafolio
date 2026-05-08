@@ -257,14 +257,20 @@ span {
 
 .intellectual-grid {
     position: absolute;
-    inset: 0;
+    inset: -50%;
     background-image: 
-        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
     background-size: 60px 60px;
-    mask-image: linear-gradient(to bottom, black, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, black, transparent);
-    opacity: 0.3;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+    opacity: 0.5;
+    animation: rotateGrid 120s linear infinite;
+}
+
+@keyframes rotateGrid {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .floating-symbols {
@@ -278,26 +284,27 @@ span {
     color: var(--color-accent);
     font-family: 'Outfit', sans-serif;
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     opacity: 0;
-    filter: blur(1px);
+    filter: blur(0.5px);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
     animation: floatIntellectual var(--d) linear infinite;
     animation-delay: var(--delay);
 }
 
 @keyframes floatIntellectual {
     0% {
-        transform: translateY(20px) rotate(0deg);
+        transform: translateY(40px) rotate(0deg) scale(0.8);
         opacity: 0;
     }
     20% {
-        opacity: 0.15;
+        opacity: 0.3;
     }
     80% {
-        opacity: 0.15;
+        opacity: 0.3;
     }
     100% {
-        transform: translateY(-100px) rotate(20deg);
+        transform: translateY(-150px) rotate(45deg) scale(1.2);
         opacity: 0;
     }
 }
